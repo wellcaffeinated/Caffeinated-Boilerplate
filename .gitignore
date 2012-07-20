@@ -1,0 +1,6 @@
+
+app/cache/dev/profiler.db
+
+app/logs/dev.log
+
+app/logs/prod.log
