@@ -1,0 +1,100 @@
+{
+    "membershipId": "9999999",
+    "api": {
+        "pcApi": {
+            "base": "/apps/lcl",
+            "dataType": "json",
+
+            "services": {
+                "store": {
+                    "path": "/storelocator",
+                    "params": {
+                        "storeId": null,
+                        "lang": "en_CA"
+                    }
+                },
+                "storeLocator": {
+                    "path": "/storelocator",
+                    "params": {
+                        "location": null,
+                        "stores": 10,
+                        "banner": null,
+                        "departments": null,
+                        "proximity": 50,
+                        "lang": "en_CA"
+                    }
+                },
+
+                "shoppinglist": "/loyalty/shoppinglist/{membershipId}",
+                "shoppinglistItem": "/loyalty/shoppinglist/{membershipId}/item/{itemId}"
+            }
+        },
+
+        "ratingsApi": {
+            "base": "",
+            "dataType": "json",
+
+            "services": {
+                "quickRating": {
+                    "path": "/{+id}",
+                    "params": {
+                        "rating": null
+                    }
+                }
+            }
+        },
+
+        "profanity": {
+            "base" : "/content/profanity",
+            "dataType": "json",
+
+            "services" : {
+                "phrases" : {
+                    "path" : "/{lang}.json"
+                }
+            }
+        },
+
+        "twitter" : {
+            "base" : "http://api.twitter.com/1",
+            "dataType" : "jsonp",
+
+            "services" : {
+                "statuses" : {
+                    "path" : "/statuses/user_timeline.json",
+                    "params" : {
+                        "include_entities" : "true",
+                        "include_rts" : "false",
+                        "screen_name" : null,
+                        "count" : 1,
+                        "trim_user" : "true",
+                        "exclude_replies" : "true"
+                    }
+                }
+            }
+        }
+    },
+
+    "storeLocator": {
+
+        "defaultSearch": "Toronto",
+        "pinUrlTpl": "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld={identifier}|ff776b",
+        "pinShadowUrlTpl": "http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
+
+        "mapDefaults": {
+            "mapType": "ROADMAP",
+            "center": {
+                "lat": 43.707594,
+                "lng": -79.365234
+            },
+            "zoom": 4,
+            "zoomDetail": 15
+        }
+    },
+
+    "liveperson": {
+        "lpNumber": "86075817",
+        "lpUnit": "service",
+        "lpLanguage": "english"
+    }
+}
