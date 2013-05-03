@@ -1,4 +1,4 @@
-$sansFontFamily:        'Karla', "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+$sansFontFamily:        'Lato', "Helvetica Neue", Helvetica, Arial, sans-serif !default;
 $serifFontFamily:       Georgia, "Times New Roman", Times, serif !default;
 $monoFontFamily:        Menlo, Consolas, "Courier New", monospace !default;
 
@@ -15,6 +15,7 @@ $phi: 1.61803398875;
 
 @import "vendor/_compass_twitter_bootstrap";
 @import "vendor/_compass_twitter_bootstrap_responsive";
+@import "vendor/flat-ui/_flat-ui";
 
 @import "compass/css3";
 @import "compass/typography";
