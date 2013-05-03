@@ -46,7 +46,9 @@ define(
             // parse rules
             rule = rule.split('.');
 
-            if ( rule.length < 2 ) throw 'Malformed api rule parameter "'+ rule.join('.') + '". Must be of form "<scope>.<service>"';
+            if ( rule.length < 2 ){
+                throw 'Malformed api rule parameter "'+ rule.join('.') + '". Must be of form "<scope>.<service>"';
+            }
 
             scope = config[ rule[0] ];
             // find rule in api config

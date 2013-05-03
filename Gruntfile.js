@@ -60,7 +60,7 @@ module.exports = function(grunt) {
             },
 
             cleanCompass: {
-                command: 'compass clean --config <%= compass.dist.options.config %>',
+                cmd: 'compass clean --config <%= compass.dist.options.config %>',
                 options: {
                     stdout: true,
                     stderr: true,
@@ -81,7 +81,7 @@ module.exports = function(grunt) {
         },
         img: {
             app: {
-                src: '<%= config.compressedDir %>/library/images'
+                src: '<%= config.compressedDir %>/library'
             }
         },
         // r.js optimization task
@@ -111,7 +111,7 @@ module.exports = function(grunt) {
             if (err) { return done(err); }
             console.log('Setting version to: ' + result.version);
             pkg.version = result.version;
-            grunt.file.write('package.json', JSON.stringify( pkg ));
+            grunt.file.write('package.json', JSON.stringify( pkg, null, 4 ));
             done();
         });
     }
@@ -129,9 +129,9 @@ module.exports = function(grunt) {
     grunt.registerTask('compress-only', ['compass', 'requirejs:app'])
 
     // Primary tasks
-    grunt.registerTask('cleanup', ['clean', 'shell:cleanCompass']);
+    grunt.registerTask('cleanup', ['clean', 'bgShell:cleanCompass']);
     grunt.registerTask('dev', [ 'bgShell:watchCompass', 'bgShell:httpserver' ]);
-    grunt.registerTask('build', ['version', 'jshint:source', 'compress-only', 'shell:rsyncBuild', 'img:app', 'cleanup']);
+    grunt.registerTask('build', ['cleanup', 'version', 'jshint:source', 'compress-only', 'img:app']);
     
     // Default task(s).
     grunt.registerTask('default', ['build']);

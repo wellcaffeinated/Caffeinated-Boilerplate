@@ -206,7 +206,9 @@ define(
             // requires this.model to be ready
             render: function(){
 
-                if ( this.el ) return true;
+                if ( this.el ){
+                    return true;
+                }
                 
                 var self = this
                     ,dfdObj = this.getDfd('render')
@@ -242,7 +244,9 @@ define(
             // requires content
             makeModel: function(){
 
-                if ( this.model ) return true;
+                if ( this.model ){
+                    return true;
+                }
                 
                 var self = this
                     ,dfdObj = this.getDfd('makeModel')
@@ -321,7 +325,9 @@ define(
                 
                 if (this.attached){
                     
-                    if (callback) callback(this);
+                    if (callback){
+                        callback(this);
+                    }
                     return this;
                 }
 
@@ -342,7 +348,9 @@ define(
                         }
                         
                         dfdObj.dfd.resolve();
-                        if (callback) callback(this);
+                        if (callback){
+                            callback(this);
+                        }
                         
                     });
                 }
@@ -358,7 +366,9 @@ define(
                 
                 if (!this.attached){
                     
-                    if (callback) callback(this);
+                    if (callback){
+                        callback(this);
+                    }
                     return this;
                 }
 
@@ -376,7 +386,9 @@ define(
                         }
                         
                         dfdObj.dfd.resolve();
-                        if (callback) callback(this);
+                        if (callback){
+                            callback(this);
+                        }
                         
                     });
                 }
@@ -407,7 +419,9 @@ define(
                 
                 if ( this.isOpen ){
                     
-                    if (callback) callback(this);
+                    if (callback){
+                        callback(this);
+                    }
                     return this;
                 }
                 
@@ -425,13 +439,17 @@ define(
                             self.el.css('top', getFirstScrollingEl('html, body').scrollTop() || 0).fadeIn( self.config.duration, function(){
                                 
                                 dfdObj.dfd.resolve();
-                                if (callback) callback(this);
+                                if (callback){
+                                    callback(this);
+                                }
                                 
                             });
                             
                         } else {
                             
-                            if (callback) callback(this);
+                            if (callback){
+                                callback(this);
+                            }
                             
                         }
                         
@@ -449,7 +467,9 @@ define(
                 
                 if ( !this.isOpen ){
                 
-                    if (callback) callback(this);
+                    if (callback){
+                        callback(this);
+                    }
                     return this;
                 }
                 
@@ -462,7 +482,9 @@ define(
                         if (self.config.detachOnClose){
                             self.detach();
                         }
-                        if (callback) callback(this);
+                        if (callback){
+                            callback(this);
+                        }
                         self.isOpen = false;
                         dfdObj.dfd.resolve();
                         
@@ -626,7 +648,9 @@ define(
                     
                     currentOverlay.open(function(){
                         
-                        if (callback) callback();
+                        if (callback){
+                            callback();
+                        }
                         self.emit('open', self);
                         
                     });
@@ -659,7 +683,9 @@ define(
                 
                 currentOverlay.close(function(){
                     
-                    if (callback) callback();
+                    if (callback){
+                        callback();
+                    }
                     self.emit('close', self);
                     
                 });

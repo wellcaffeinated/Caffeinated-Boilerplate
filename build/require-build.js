@@ -6,10 +6,10 @@
 module.exports = ({
     // Target directory to build into. Create a temporary directory.
     // all source will be copied here first
-    dir: '<%= boilerplate.tempDir %>',
+    dir: '<%= config.compressedDir %>',
     // Relative path to the source directory.
     // The "dir" directory will mirror this directory
-    appDir: '<%= boilerplate.sourceDir %>',
+    appDir: '<%= config.sourceDir %>',
     // The baseUrl of our javascript
     // all require calls are relative to this path
     baseUrl: 'library/js/',
@@ -19,8 +19,8 @@ module.exports = ({
     optimize: 'uglify',
     optimizeCss: 'none',
 
-    // exclude any hidden files (.filename) and any node.js libraries (none in our codebase right now)
-    fileExclusionRegExp: /^\.|node_modules|erefill/,
+    // exclude any hidden files (.filename) and any node.js libraries
+    fileExclusionRegExp: /^\.|node_modules/,
 
     // don't include resources loaded by plugins into the 
     // javascript. Let modules load them asynchronously from CMS
@@ -35,7 +35,7 @@ module.exports = ({
     
     // Include configurations from our require-config file
     // so r.js knows where to look for resources
-    mainConfigFile: '<%= boilerplate.sourceDir %>/library/js/require-config.js',
+    mainConfigFile: '<%= config.sourceDir %>/library/js/config/require-config.js',
 
     // Define our build layers...
     modules: [
@@ -45,7 +45,7 @@ module.exports = ({
         // this will include things like 
         // jquery, stapes, globals mediator, etc...
         {
-            name: 'require-config',
+            name: 'config/require-config',
 
             include: [
                 'mediators/globals'
@@ -78,7 +78,7 @@ module.exports = ({
             // Exclude anything already included
             // in the require-config build layer
             exclude: [
-                'require-config'
+                'config/require-config'
             ]
         }
     ]
