@@ -2,7 +2,7 @@
  * RequireJS plugin for loading JSON files
  * - depends on Text plugin and it was HEAVILY "inspired" by it as well.
  * Author: Miller Medeiros
- * Version: 0.3.1 (2013/02/04)
+ * Version: 0.3.2 (2013/08/17)
  * Released under the MIT license
  */
 define(['text'], function(text){
@@ -41,21 +41,25 @@ define(['text'], function(text){
                     }
                 );
             }
-        }//,
+        },
 
-        // normalize : function (name, normalize) {
-        //     //used normalize to avoid caching references to a "cache busted" request
-        //     return (name.indexOf(CACHE_BUST_FLAG) === -1)? name : cacheBust(name);
-        // },
+        normalize : function (name, normalize) {
+            // used normalize to avoid caching references to a "cache busted" request
+            if (name.indexOf(CACHE_BUST_FLAG) !== -1) {
+                name = cacheBust(name);
+            }
+            // resolve any relative paths
+            return normalize(name);
+        },
 
-        // //write method based on RequireJS official text plugin by James Burke
-        // //https://github.com/jrburke/requirejs/blob/master/text.js
-        // write : function(pluginName, moduleName, write){
-        //     if(moduleName in buildMap){
-        //         var content = buildMap[moduleName];
-        //         write('define("'+ pluginName +'!'+ moduleName +'", function(){ return '+ content +';});\n');
-        //     }
-        // }
+        //write method based on RequireJS official text plugin by James Burke
+        //https://github.com/jrburke/requirejs/blob/master/text.js
+        write : function(pluginName, moduleName, write){
+            if(moduleName in buildMap){
+                var content = buildMap[moduleName];
+                write('define("'+ pluginName +'!'+ moduleName +'", function(){ return '+ content +';});\n');
+            }
+        }
 
     };
 });
