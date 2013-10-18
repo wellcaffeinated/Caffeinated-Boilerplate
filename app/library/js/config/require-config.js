@@ -2,6 +2,10 @@
  * Config options at: http://requirejs.org/docs/api.html#config
  */
 require.config({
+
+    config: {
+        // module specific configuration
+    },
     
     shim: {
         // Add shims for things here

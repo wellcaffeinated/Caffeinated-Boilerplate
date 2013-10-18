@@ -1,6 +1,6 @@
 {
     "name": "Caffeinated-Boilerplate",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Boilerplate project setup for general use",
     "author": "Jasper Palfree <jasper@wellcaffeinated.net>",
     "contributors": [
@@ -21,7 +21,8 @@
         "grunt-contrib-jshint": "*",
         "grunt-img": "*",
         "grunt-contrib-requirejs": "*",
-        "grunt-contrib-compass": "*"
+        "grunt-contrib-compass": "*",
+        "grunt-replace": "*"
     },
     "bundledDependencies": [],
     "license": "MIT"

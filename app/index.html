@@ -15,7 +15,8 @@
 
   <!-- js includes -->
   <script src="library/js/vendor/modernizr.js"></script>
-  <script src="library/js/vendor/require.js" data-main="library/js/page-boilerplate"></script>
+  <script>var require = { urlArgs: 'v=@@pkg.version' };</script>
+  <script src="library/js/vendor/require.js?v=@@pkg.version" data-main="library/js/page-boilerplate"></script>
 </head>
 <body>
     

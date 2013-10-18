@@ -89,6 +89,15 @@ module.exports = function(grunt) {
             app: {
                 options: require('./build/require-build')
             }
+        },
+        replace: {
+            dist: {
+                options: { patterns: [{ json: config }] },
+                files: [{
+                    src: ['<%= config.compressedDir %>/*.html'],
+                    dest: './'
+                }]
+            }
         }
     });
 
@@ -123,6 +132,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-img');
     grunt.loadNpmTasks('grunt-contrib-requirejs');
     grunt.loadNpmTasks('grunt-contrib-compass');
+    grunt.loadNpmTasks('grunt-replace');
     
     // Tasks
     grunt.registerTask('version', promptVersion);
@@ -131,7 +141,7 @@ module.exports = function(grunt) {
     // Primary tasks
     grunt.registerTask('cleanup', ['clean', 'bgShell:cleanCompass']);
     grunt.registerTask('dev', [ 'bgShell:watchCompass', 'bgShell:httpserver' ]);
-    grunt.registerTask('build', ['cleanup', 'version', 'jshint:source', 'compress-only', 'img:app']);
+    grunt.registerTask('build', ['cleanup', 'version', 'jshint:source', 'compress-only', 'replace:dist', 'img:app']);
     
     // Default task(s).
     grunt.registerTask('default', ['build']);
